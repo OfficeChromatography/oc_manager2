@@ -1,0 +1,119 @@
+<!DOCTYPE html []>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="MarkdownViewer++" />
+    <title>README.md</title>
+    <style type="text/css">
+            
+/* Avoid page breaks inside the most common attributes, especially for exports (i.e. PDF) */
+td, h1, h2, h3, h4, h5, p, ul, ol, li {
+    page-break-inside: avoid; 
+}
+
+        </style>
+  </head>
+  <body>
+    <h1 id="oc-manager2-next-generation-office-chromatography">OC Manager2 - Next Generation Office Chromatography</h1>
+    <p>
+      <img src="OC_manager2.png" alt="OC_manager2 screenshot" />
+    </p>
+    <p>The next generation OCLab2 (<a href="https://github.com/OfficeChromatography/oclab2">https://github.com/OfficeChromatography/oclab2</a>) was accompagnied by new software, OC Manager2, completely restructured and newly written in R.</p>
+    <h2 id="installation">Installation</h2>
+    <p>To install the software, prepare a Raspberry Pi 4B (4 GB RAM) with Raspberry Pi OS with Desktop (<a href="https://www.raspberrypi.org/downloads">https://www.raspberrypi.org/downloads</a>)</p>
+    <p>Open the Raspberry-Pi configuration and select the tab 'Interfaces'. <br />
+Enable: Camera, SSH, VNC, I2C, Serial Port, Remote GPIO. <br />
+Select the tab 'Performance' and increase GPU Memory to 512 MB. <br />
+Click Okay and reboot.</p>
+    <h3 id="problems-with-time-server">Problems with time server</h3>
+    <p>You may run into problems, if date and time is not correctly synchronized, hindering the OS update and further installations.
+In this case, activate the debian time server (uncomment the line) or select a proper time server working for you. <br /></p>
+    <p>Therefore open the timesyncd.conf</p>
+    <pre>
+      <code>sudo nano /etc/systemd/timesyncd.conf
+</code>
+    </pre>
+    <p>[Time]<br />
+#NTP=<br />
+#FallbackNTP=0.debian.pool.ntp.org 1.debian.pool.ntp.org 2.debian.pool.ntp.org $ <br />
+#FallbackNTP=[your time server]</p>
+    <p>followed by</p>
+    <pre>
+      <code>sudo timedatectl set-ntp true
+sudo reboot
+</code>
+    </pre>
+    <p>Then wait until date and time is correctly synchronized, continuing with</p>
+    <pre>
+      <code>sudo apt-get update
+sudo apt-get upgrade
+</code>
+    </pre>
+    <h3 id="software-installation">Software installation</h3>
+    <p>To install the OC_manager2 software, open a terminal on the Raspberry Pi (being in /home/pi) and run the following command:</p>
+    <pre>
+      <code>git clone https://github.com/OfficeChromatography/oc_manager2.git
+</code>
+    </pre>
+    <p>Open the file <code>/home/pi/OC_manager2/sudo_bash.txt</code>, copy the single line (for the desktop or lite version) and paste it into the terminal, for example:</p>
+    <pre>
+      <code>sudo bash OC_manager2/oc_manager_install_desktop.sh |&amp; tee oc-install.txt
+</code>
+    </pre>
+    <p>followed by ENTER.<br /></p>
+    <p>The install script will install all necessary libraries and software packages, followed by a reboot. <br />
+In case of problems, consult the logfile <code>/home/pi/oc-install.txt</code>,
+and also consult the README_R_packages_versions file cloned with OC_manager2.</p>
+    <h3 id="ready-prepared-image-file">Ready prepared image file</h3>
+    <p>Alternatively, you can download an image (2.3 GB) of Raspberry Pi OS with Desktop together with the OC_manager2 set-up, following <a href="https://jlubox.uni-giessen.de/dl/fiSoKKqA9MwEVaHx9aHZnivu/OC_manager2_desktop.img.gz">this link</a>.<br />
+If you prefer to use the Raspberry OS lite (no desktop), you can find the respective image (1.1 GB) with <a href="https://jlubox.uni-giessen.de/dl/fiNMcR35MuodHWFiVUqoE6qm/OC_manager2_lite.img.gz">this link</a>.<br />
+Using the ‘Raspberry Pi Imager‘ (<a href="https://www.raspberrypi.org/downloads">https://www.raspberrypi.org/downloads</a>), flash the image onto an SD card (&gt;= 16 BG) and boot the Raspberry Pi.
+User = pi; password = oc_lab2.
+Open the Raspberry Pi configuration to select your settings in the 'Localisation' tab.<br />
+Perform an OS upgrade with</p>
+    <pre>
+      <code>sudo apt-get update
+sudo apt-get upgrade
+</code>
+    </pre>
+    <p>and reboot.</p>
+    <h3 id="static-ip-adress">Static IP adress</h3>
+    <p>It is recommended to set a static IP adress on the Raspberry Pi by running the following command in a terminal</p>
+    <pre>
+      <code>sudo nano /etc/dhcpcd.conf
+</code>
+    </pre>
+    <p>and filling out the following lines:<br />
+interface eth0 (or eth1 using the USB hub for LAN connection)<br />
+static ip_address=<br />
+static routers=<br />
+static domain_name_servers=<br /></p>
+    <p>Save the changes with Ctrl+O, and close the file with Ctrl+X.
+ 
+Then you can directly access the OC_manager2 through a browser from any PC/notebook in your network by typing the IP adress in the adress field.<br /></p>
+    <p>Therefore, however, you have to enable a Crontab job, accessed by:</p>
+    <pre>
+      <code>sudo crontab -e
+</code>
+    </pre>
+    <p>Once in the editor, add this line, which will launch the application at reboot:</p>
+    <pre>
+      <code>@reboot Rscript /home/pi/OC_manager2/app_exec.R
+</code>
+    </pre>
+    <p>Save the changes with Ctrl+O, and leave the editor with Ctrl+X.</p>
+    <h3 id="opening-the-oc-manager2-at-the-raspberry-pi">Opening the OC Manager2 at the Raspberry Pi</h3>
+    <p>After reboot, the OC Manager2 will be available in the browser at <a href="http://127.0.0.1">http://127.0.0.1</a> (localhost), if the Crontab job was configured respectively. <br />
+Therefore, best configure the browser to start with the custom URL <a href="http://127.0.0.1">http://127.0.0.1</a><br /></p>
+    <h4 id="directly-from-r-in-case-of-problems-to-catch-the-errors">Directly from R (in case of problems to catch the errors)</h4>
+    <p>Being in a terminal at pi/home, type the following commands</p>
+    <pre>
+      <code>cd TLC-MS_manager
+R
+shiny::runApp()
+</code>
+    </pre>
+    <h3 id="documentation">Documentation</h3>
+    <p>On how to use the software, a pdf is available in the downloaded folder <code>OC_manager2/Instruction</code>.</p>
+  </body>
+</html>
