@@ -2,7 +2,7 @@
 
 ![OC_manager2 screenshot](OC_manager2.png)
 
-The next generation OCLab2 (https://github.com/OfficeChromatography/oclab2) was accompagnied by new software, OC Manager2, completely restructured and newly written in R.
+The next generation OCLab2 (https://github.com/OfficeChromatography/oclab2) was accompagnied by new software, OC Manager2, completely restructured and newly written in R supported by Python.
 
 ## Installation
 
