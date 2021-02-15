@@ -1,0 +1,24 @@
+testConnection  <- function(){
+    connected = ocDriver$is_connected()
+    if (connected){                                        # create the test gcode
+        print("Connected")
+    }
+    else {
+        print("try again")
+   }
+}
+
+
+observeEvent(input$Serial_port_connect,{
+     if(nchar(input$Serial_port) == 0){
+         throwError("No board selected")
+     }else{
+         print("Connecting")
+         ocDriver$connect()
+         testConnection()
+     }
+  })
+
+observeEvent(input$Serial_port_disconnect,{
+        ocDriver$disconnect()
+    }

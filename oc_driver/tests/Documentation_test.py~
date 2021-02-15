@@ -1,0 +1,28 @@
+import unittest
+import sys
+import logging
+import OCDriver
+
+
+def get_Documentation_Driver():
+    oc_driver = OCDriver.OCDriver()
+    return oc_driver.get_documentation_driver()
+
+
+def load_test_gcode():
+    gcode_file = open("./tests/right_gcode.gcode", 'r')
+    return gcode_file.read().replace('\r', '')
+
+
+def write_gcode_file(fN, code):
+    f = open("./tests/" + fN, "w")
+    f.write(code)
+
+
+class TestApplication(unittest.TestCase):
+    def test_load_Docu(self):
+        get_Documentation_driver()
+
+
+if __name__ == "__main__":
+    unittest.main()

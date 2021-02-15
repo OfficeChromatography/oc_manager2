@@ -113,5 +113,5 @@ shiny::runApp()
 
 ### Documentation
 
-On how to use the software, a pdf is available in the downloaded folder ```OC_manager2/Instruction```.
+On how to use the software, a pdf is available in the downloaded folder ```OC_manager2/Instructions```.
 

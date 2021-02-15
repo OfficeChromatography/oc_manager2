@@ -1,0 +1,2 @@
+sudo bash OC_manager2/oc_manager_install_desktop.sh |& tee oc-install.txt
+sudo bash OC_manager2/oc_manager_install_lite.sh |& tee oc-install.txt
