@@ -18,7 +18,7 @@ td, h1, h2, h3, h4, h5, p, ul, ol, li {
     <p>
       <img src="OC_manager2.png" alt="OC_manager2 screenshot" />
     </p>
-    <p>The next generation OCLab2 (<a href="https://github.com/OfficeChromatography/oclab2">https://github.com/OfficeChromatography/oclab2</a>) was accompagnied by new software, OC Manager2, completely restructured and newly written in R.</p>
+    <p>The next generation <a href="https://github.com/OfficeChromatography/oclab2">OCLab2</a> was accompagnied by new software, OC Manager2, completely restructured and newly written in R supported by Python.</p>
     <h2 id="installation">Installation</h2>
     <p>To install the software, prepare a Raspberry Pi 4B (4 GB RAM) with Raspberry Pi OS with Desktop (<a href="https://www.raspberrypi.org/downloads">https://www.raspberrypi.org/downloads</a>)</p>
     <p>Open the Raspberry-Pi configuration and select the tab 'Interfaces'. <br />
@@ -65,9 +65,12 @@ sudo apt-get upgrade
 In case of problems, consult the logfile <code>/home/pi/oc-install.txt</code>,
 and also consult the README_R_packages_versions file cloned with OC_manager2.</p>
     <h3 id="ready-prepared-image-file">Ready prepared image file</h3>
-    <p>Alternatively, you can download an image (2.3 GB) of Raspberry Pi OS with Desktop together with the OC_manager2 set-up, following <a href="https://jlubox.uni-giessen.de/dl/fiSoKKqA9MwEVaHx9aHZnivu/OC_manager2_desktop.img.gz">this link</a>.<br />
-If you prefer to use the Raspberry OS lite (no desktop), you can find the respective image (1.1 GB) with <a href="https://jlubox.uni-giessen.de/dl/fiNMcR35MuodHWFiVUqoE6qm/OC_manager2_lite.img.gz">this link</a>.<br />
-Using the ‘Raspberry Pi Imager‘ (<a href="https://www.raspberrypi.org/downloads">https://www.raspberrypi.org/downloads</a>), flash the image onto an SD card (&gt;= 16 BG) and boot the Raspberry Pi.
+    <p>Alternatively, you can download an image (2.3 GB) of Raspberry Pi OS with Desktop together
+with the OC_manager2 set-up, following
+<a href="https://jlubox.uni-giessen.de/dl/fiM74GiRfUma6C3eK9siZgzC/OC_manager2_desktop.img.gz">this link</a>.<br />
+If you prefer to use the Raspberry OS lite (no desktop), you can find the respective image
+(1.1 GB) <a href="https://jlubox.uni-giessen.de/dl/fi9JuCzp5Udz5WNXeru3QWnC/OC_manager2_lite.img.gz">here</a>.<br /></p>
+    <p>Using the ‘Raspberry Pi Imager‘ (<a href="https://www.raspberrypi.org/downloads">https://www.raspberrypi.org/downloads</a>), flash the image onto an SD card (&gt;= 16 BG) and boot the Raspberry Pi.
 User = pi; password = oc_lab2.
 Open the Raspberry Pi configuration to select your settings in the 'Localisation' tab.<br />
 Perform an OS upgrade with</p>
@@ -94,6 +97,7 @@ Then you can directly access the OC_manager2 through a browser from any PC/noteb
     <p>Therefore, however, you have to enable a Crontab job, accessed by:</p>
     <pre>
       <code>sudo crontab -e
+
 </code>
     </pre>
     <p>Once in the editor, add this line, which will launch the application at reboot:</p>
