@@ -123,7 +123,7 @@ Therefore, best configure the browser to start with the custom URL http://127.0.
 Being in a terminal at pi/home, type the following commands 
 
 ```
-cd TLC-MS_manager
+cd OC_manager2
 R
 shiny::runApp()
 ```
