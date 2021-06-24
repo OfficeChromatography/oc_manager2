@@ -66,9 +66,9 @@ and also consult the README_R_packages_versions file cloned with OC_manager2.
 
 Alternatively, you can download an image (2.3 GB) of Raspberry Pi OS with Desktop together 
 with the OC_manager2 set-up, following 
-[this link](https://jlubox.uni-giessen.de/dl/fiM74GiRfUma6C3eK9siZgzC/OC_manager2_desktop.img.gz).<br /> 
+[this link](https://jlubox.uni-giessen.de/dl/fi56jQAHvpw5iWSrXFQaA49v/OC_manager2_desktop.img.gz).<br /> 
 If you prefer to use the Raspberry OS lite (no desktop), you can find the respective image 
-(1.1 GB) [here](https://jlubox.uni-giessen.de/dl/fi9JuCzp5Udz5WNXeru3QWnC/OC_manager2_lite.img.gz).<br />
+(1.1 GB) [here](https://jlubox.uni-giessen.de/dl/fiTNMzoM6dDYT9CTq1DJQVME/OC_manager2_lite.img.gz).<br />
 
 Using the ‘Raspberry Pi Imager‘ (https://www.raspberrypi.org/downloads), flash the image onto an SD card (>= 16 BG) and boot the Raspberry Pi.
 User = pi; password = oc_lab2.
