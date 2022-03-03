@@ -2,12 +2,8 @@ import drivers.gcodes as GCODES
 from config.picture_config import PictureConfig
 from picamera import PiCamera
 from time import sleep
-<<<<<<< HEAD
 from fractions import Fraction
 import csv 
-=======
-import csv
->>>>>>> bcb42bb7fee387e830007b1d13dd18237d144650
 
 class DocumentationDriver():
     
